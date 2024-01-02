@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            background-color: red;
+        }
+        .container-green {
+            background-color: green;
+            padding: 5px;
+        }
+        body {
+            background-color: blue;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Counter</h1>
+        <h4>Clicks: <span id="span">0</span></h4>
+        <button class="btn-add">Add</button>
+        <button class="btn-subtract">Subtract</button>
+
+        <div class="container-green">
+            <button class="btn">Button</button>
+            <button class="btn2">Button2</button>
+        </div>
+    </div>
+    <script>
+        const span = document.querySelector('#span')
+        let count = 0;
+
+        //addEventListener
+        //     const btnAdd = document.querySelector('.btn-add');
+        //     const btnSubtract = document.querySelector('.btn-subtract');
+
+
+        //     btnAdd.addEventListener('click', () => {
+        //         span.textContent = count ++;
+        //     })
+
+        //     btnSubtract.addEventListener('click', () => {
+        //         span.textContent = count --;
+        //     })
+
+        const container = document.querySelector('.container')   
+        container.addEventListener('click', e => {
+            const isAdd = e.target.classList.contains('btn-add')
+            const isSubtract = e.target.classList.contains('btn-subtract')
+            isAdd && (span.textContent = count++)
+            isSubtract && (span.textContent = count--)
+            // e.stopPropagation()
+        })
+        
+        document.body.addEventListener('click',()=>{
+            console.log('Click in body')
+        })
+
+
+        const containerGreen = document.querySelector('.container-green')
+        const btn = document.querySelector('.btn')
+        containerGreen.addEventListener('click', (e) => {
+            console.log('Click container-green')
+            e.stopPropagation()
+        })
+        btn.addEventListener('click', (e) => {
+            console.log('Click in btn')
+            e.stopPropagation()
+        })
+
+    </script>
+</body>
+
+</html>
